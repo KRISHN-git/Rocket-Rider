@@ -53,7 +53,7 @@ yarn dev
 pnpm dev
 ```
 
-Open [Meteror-Rush](https://meteor-rush.vercel.app/) in your browser to play.
+Open [Meteror-Rush](https://rocket-rider-delta.vercel.app/) in your browser to play.
 
 ---
 
