@@ -1,4 +1,4 @@
-# Meteor Rush
+# Rocket Rider
 
 <p align="center">
   <img src="public/screenshot.png" alt="Rocket Rider Logo" width="1000"/>
