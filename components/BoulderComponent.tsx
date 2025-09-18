@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image';
 
+//animation's playback state is controlled by the isMoving prop 
 type Props = {
     isMoving?: boolean,
     what: any,
@@ -8,6 +9,7 @@ type Props = {
     when: any
 }
 
+//Randomization
 const BoulderComponent = ({ isMoving, what, soWhat, when }: Props) => {
     const [xState, setXState] = useState(0);
     const [yState, setYState] = useState(0);
@@ -19,24 +21,28 @@ const BoulderComponent = ({ isMoving, what, soWhat, when }: Props) => {
         detectCollision();
     }, [when])
 
-    const detectCollision = () => {
+    //detectCollision function is called inside a useEffect hook, which runs whenever the when prop changes
+    //The collision is determined by comparing the boulder's coordinates with the rocket's coordinates
+    function detectCollision() {
         if (boulderRef.current) {
             const boulder = (boulderRef.current as any).getBoundingClientRect();
             const didCollide = boulder.left + 30 < what.right &&
-            boulder.right - 30 > what.left && 
-            boulder.bottom - 30 > what.top && 
-            boulder.top + 30 < what.bottom;
+                boulder.right - 30 > what.left &&
+                boulder.bottom - 30 > what.top &&
+                boulder.top + 30 < what.bottom;
             if (didCollide) {
                 soWhat();
             }
         }
     }
+    // Randomly meteors ko place krna 
     useEffect(() => {
         setXState(Math.random() * (window.innerWidth - 80));
         setYState(- Math.random() * 100 - 100);
         setRotation(Math.random() * 360);
     }, [])
 
+    // movement of the boulder falling.
     return (
         <div ref={boulderRef} className='boulder-shadow' style={{
             position: 'absolute',

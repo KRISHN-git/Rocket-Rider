@@ -7,6 +7,7 @@ type Props = {
     info: any
 }
 
+//It receives an info prop containing various game state variables from page.tsx
 const GameInfoOverlay = ({ info }: Props) => {
     const { isLoading, isDetected, isColliding, distance, livesRemainingState, isGameOver } = info;
     const lives = [];

@@ -8,6 +8,7 @@ type Props = {
 let detectionInterval: any;
 const HandRecognizer = ({ setHandResults }: Props) => {
     const videoRef = useRef<HTMLVideoElement>(null);
+    // calling initialVideoAndModel on mount
     useEffect(() => {
         initVideoAndModel();
 
@@ -15,6 +16,8 @@ const HandRecognizer = ({ setHandResults }: Props) => {
             clearInterval(detectionInterval);
         }
     }, [])
+
+    //It immediately calls setHandResults({ isLoading: true }) to inform the parent component (page.tsx) that the setup process has begun, allowing the UI to display a loading indicator.
 
     const initVideoAndModel = async () => {
         setHandResults({ isLoading: true })
@@ -26,6 +29,7 @@ const HandRecognizer = ({ setHandResults }: Props) => {
 
         await initVideo(videoElement);
 
+        //Once the video and model are ready, a setInterval is established to run the hand detection process approximately 30 times per second.
         const handLandmarker = await initModel();
         detectionInterval = setInterval(() => {
             const detections = handLandmarker.detectForVideo(videoElement, Date.now());
@@ -43,6 +47,7 @@ const HandRecognizer = ({ setHandResults }: Props) => {
 
 export default HandRecognizer
 
+//access user's camera
 async function initVideo(videoElement: HTMLVideoElement) {
     const stream = await navigator.mediaDevices.getUserMedia({
         video: true
@@ -65,7 +70,10 @@ async function initModel() {
     return handLandmarker
 }
 
+//This function receives the detection results and translates them into control data.
+
 function processDetections(detections: HandLandmarkerResult, setHandResults: (result: any) => void) {
+ 
     if (detections && detections.handedness.length > 1) {
         const rightIndex = detections.handedness[0][0].categoryName === 'Right' ? 0 : 1;
         const leftIndex = rightIndex === 0 ? 1 : 0;
@@ -76,6 +84,8 @@ function processDetections(detections: HandLandmarkerResult, setHandResults: (re
         const tilt = (rightY - leftY) / (rightX - leftX);
         const degrees = (Math.atan(tilt) * 180) / Math.PI;
 
+        //calls the setHandResults prop (a function from page.tsx)
+        
         setHandResults({
             isDetected: true,
             tilt,

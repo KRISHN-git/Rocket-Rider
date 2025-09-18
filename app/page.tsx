@@ -35,6 +35,7 @@ export default function Home() {
     setLivesRemainingState(livesRemaining);
   }, [])
 
+  //distanceInterval increments the distance state every 100ms when the game is detected and not over.
   useEffect(() => {
     if (isDetected && !isGameOver) {
       distanceInterval = setInterval(() => {
@@ -47,7 +48,7 @@ export default function Home() {
     }
   }, [isDetected, isGameOver])
 
-
+//generationInterval adds four new boulders to the state array every 1000ms.
   useEffect(() => {
     if (isDetected && !isGameOver) {
       generationInterval = setInterval(() => {
@@ -64,6 +65,7 @@ export default function Home() {
         })
       }, 1000);
 
+      //removalInterval runs every 5000ms to clean up boulders whose timestamps indicate they have passed the removal threshold.
       removalInterval = setInterval(() => {
         const now = Date.now();
         setBoulders(prevArr => {
@@ -85,7 +87,7 @@ export default function Home() {
     setIsLoading(result.isLoading);
     setIsDetected(result.isDetected);
     setDegrees(result.degrees);
-    // set rocketLeft
+    // set rocketLeft using calculated degrees
 
     if (result.degrees && result.degrees !== 0) {
       setDetectCollisionTrigger(Math.random());
@@ -104,7 +106,8 @@ export default function Home() {
   }
 
   const collisionHandler = () => {
-    // after collision
+    // after collision if isInvincible = true, triggers collision feedback (setIsColliding(true)), plays a sound effect (playFX()), and decrements livesRemaining.
+    
     if (!isInvincible && !isGameOver) {
       console.log("COLLISION");
       isInvincible = true;
@@ -113,9 +116,10 @@ export default function Home() {
       livesRemaining--;
       setLivesRemainingState(livesRemaining);
       if (livesRemaining <= 0) {
-        // then game over
+        // game is over!!
         setIsGameOver(true);
       }
+      //to reset invincibility after 1.5 seconds (1500ms) settimeout is used
       setTimeout(() => {
         isInvincible = false;
         setIsColliding(isInvincible);
@@ -131,7 +135,8 @@ export default function Home() {
     }
 
   }, [isDetected, isGameOver])
-  
+
+  // component Rendering
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <div className={`absolute left-3 top-3 z-30 transition-all duration-500 ${isDetected ? 'w-24' : 'w-48'} `}>
@@ -150,8 +155,9 @@ export default function Home() {
         {boulders.map((b, idx) => {
           return <BoulderComponent key={b.key} isMoving={isDetected} what={rocket} soWhat={collisionHandler} when={detectCollisionTrigger} />
         })}
-      </div>
+      </div>     
       <GameInfoOverlay info={{ isLoading, isDetected, isColliding, distance, livesRemainingState, isGameOver }} />
     </main>
   );
+  //Receives all status information (loading, collision, distance, lives and game over).
 }

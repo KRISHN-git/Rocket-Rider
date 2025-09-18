@@ -1,10 +1,10 @@
 # Meteor Rush
 
 <p align="center">
-  <img src="public/screenshot.png" alt="Meteor Rush Logo" width="1000"/>
+  <img src="public/screenshot.png" alt="Rocket Rider Logo" width="1000"/>
 </p>
 
-Meteor Rush is a gesture-controlled browser game built with Next.js and TypeScript. Use your hand gestures (via webcam) to control a rocket and dodge falling meteors. The game leverages real-time hand tracking using MediaPipe and provides an engaging, interactive experience.
+Rocket Rider is a gesture-controlled browser game built with TypeScript and Next.js. Use your hand gestures (via webcam) to control a rocket and dodge falling meteors. The game leverages real-time hand tracking using MediaPipe and provides an engaging, interactive experience.
 
 ---
 
@@ -53,7 +53,7 @@ yarn dev
 pnpm dev
 ```
 
-Open [Meteror-Rush](https://rocket-rider-delta.vercel.app/) in your browser to play.
+Open [Rocket-Rider](https://rocket-rider-delta.vercel.app/) in your browser to play.
 
 ---
 
