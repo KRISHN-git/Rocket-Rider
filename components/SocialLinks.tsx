@@ -1,6 +1,6 @@
 'use client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faYoutube, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import Image from 'next/image';
 
 const SocialMediaLinks = () => {
@@ -10,7 +10,7 @@ const SocialMediaLinks = () => {
                 <a href="https://github.com/KRISHN-git" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faGithub} size="2x" />
                 </a>
-                <a href="https://www.linkedin.com/in/krishn-kumar-14200b361/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/krishn-kumar/" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </a>
             </div>

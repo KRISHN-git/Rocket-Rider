@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Meteor Rush",
+  title: "Rocket Rider",
   description: "Hand controlled game",
 };
 
