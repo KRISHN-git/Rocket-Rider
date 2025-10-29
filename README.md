@@ -1,7 +1,7 @@
 # Rocket Rider
 
 <p align="center">
-  <img src="public/screenshot.png" alt="Rocket Rider Logo" width="1000"/>
+  <img src="public/gameplay.png" alt="Rocket Rider Logo" width="1000"/>
 </p>
 
 Rocket Rider is a gesture-controlled browser game built with TypeScript and Next.js. Use your hand gestures (via webcam) to control a rocket and dodge falling meteors. The game leverages real-time hand tracking using MediaPipe and provides an engaging, interactive experience.
