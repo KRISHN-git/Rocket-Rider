@@ -4,7 +4,6 @@ import GameInfoOverlay from "@/components/GameInfoOverlay";
 import HandRecognizer from "@/components/HandRecognizer";
 import RocketComponent from "@/components/RocketComponent";
 import { playBackground, playFX } from "@/utils/audiohandler";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 let generationInterval: any;
@@ -35,7 +34,7 @@ export default function Home() {
     setLivesRemainingState(livesRemaining);
   }, [])
 
-  //distanceInterval increments the distance state every 100ms when the game is detected and not over.
+  //distanceInterval increments the distance state every 100ms when the game is detected running and is not over.
   useEffect(() => {
     if (isDetected && !isGameOver) {
       distanceInterval = setInterval(() => {
