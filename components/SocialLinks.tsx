@@ -7,7 +7,7 @@ const SocialMediaLinks = () => {
     return (
         <div className='flex flex-row gap-4 items-center'>
             <div className='flex flex-row gap-4 items-center'>
-                <a href="https://github.com/KRISHN-git" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/KRISHN-git/Rocket-Rider" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faGithub} size="2x" />
                 </a>
                 <a href="https://www.linkedin.com/in/krishn-kumar/" target="_blank" rel="noopener noreferrer">
